@@ -133,8 +133,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/efsblog/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="92" column="58" lean-forward="false" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
+            <state relative-caret-position="234">
+              <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding>
                 <element signature="e#311#320#0" expanded="true" />
               </folding>
@@ -188,15 +188,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>s</find>
-      <find>sto</find>
-      <find>stock</find>
-      <find>stock_ne</find>
-      <find>stock_new</find>
-      <find>i</find>
-      <find>ine</find>
-      <find>in</find>
-      <find>inve</find>
       <find>inves</find>
       <find>invest_</find>
       <find>invest</find>
@@ -207,7 +198,6 @@
       <find>investment_li</find>
       <find>investment_lis</find>
       <find>investment_list</find>
-      <find>p</find>
       <find>pu</find>
       <find>pur</find>
       <find>purc</find>
@@ -218,6 +208,16 @@
       <find>purchase_dat</find>
       <find>purchase</find>
       <find>purchase_date</find>
+      <find>p</find>
+      <find>pip</find>
+      <find>pips</find>
+      <find>pipse</find>
+      <find>pipseld</find>
+      <find>pipself</find>
+      <find>pipsel</find>
+      <find>.</find>
+      <find>.json</find>
+      <find>.jso</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -291,6 +291,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="efsblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="efsblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="efsblog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="portfolio" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -863,8 +877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/efsblog/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="92" column="58" lean-forward="false" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
+        <state relative-caret-position="234">
+          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
             <element signature="e#311#320#0" expanded="true" />
           </folding>
