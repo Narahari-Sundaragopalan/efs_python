@@ -6,6 +6,12 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.db.models import Sum
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import CustomerSerializer
+
+
 
 
 def home(request):
@@ -60,7 +66,7 @@ def stock_new(request):
            stock = form.save(commit=False)
            stock.created_date = timezone.now()
            stock.save()
-           stocks = Stock.objects.filter(purchase_date__lte=timezone.now())
+           stocks = Stock.objects.all()
            return render(request, 'portfolio/stock_list.html',
                          {'stocks': stocks})
    else:
@@ -79,7 +85,7 @@ def stock_edit(request, pk):
            # stock.customer = stock.id
            stock.updated_date = timezone.now()
            stock.save()
-           stocks = Stock.objects.filter(purchase_date__lte=timezone.now())
+           stocks = Stock.objects.all()
            return render(request, 'portfolio/stock_list.html', {'stocks': stocks})
    else:
        # print("else")
@@ -91,7 +97,7 @@ def stock_edit(request, pk):
 def stock_delete(request, pk):
    stock = get_object_or_404(Stock, pk=pk)
    stock.delete()
-   stocks = Stock.objects.filter(purchase_date__lte=timezone.now())
+   stocks = Stock.objects.all()
    return render(request, 'portfolio/stock_list.html', {'stocks': stocks})
 
 
@@ -106,10 +112,10 @@ def investment_new(request):
    if request.method == "POST":
        form = InvestmentForm(request.POST)
        if form.is_valid():
-           investment = form.save(commit=False)
+           investment = form.save(commit=True)
            investment.created_date = timezone.now()
            investment.save()
-           investments = Investment.objects.filter(acquired_date__lte=timezone.now())
+           investments = Investment.objects.all()
            return render(request, 'portfolio/investment_list.html',
                          {'investments': investments})
    else:
@@ -128,7 +134,7 @@ def investment_edit(request, pk):
            # stock.customer = stock.id
            investment.updated_date = timezone.now()
            investment.save()
-           investments = Investment.objects.filter(acquired_date__lte=timezone.now())
+           investments = Investment.objects.all()
            return render(request, 'portfolio/investment_list.html', {'investments': investments})
    else:
        # print("else")
@@ -140,7 +146,7 @@ def investment_edit(request, pk):
 def investment_delete(request, pk):
    investment = get_object_or_404(Investment, pk=pk)
    investment.delete()
-   investments = Investment.objects.filter(acquired_date__lte=timezone.now())
+   investments = Investment.objects.all()
    return render(request, 'portfolio/investment_list.html', {'investments': investments})
 
 
@@ -150,9 +156,21 @@ def portfolio(request,pk):
    customers = Customer.objects.filter(created_date__lte=timezone.now())
    investments =Investment.objects.filter(customer=pk)
    stocks = Stock.objects.filter(customer=pk)
+   sum_recent_value = Investment.objects.filter(customer=pk).aggregate(Sum('recent_value'))
    sum_acquired_value = Investment.objects.filter(customer=pk).aggregate(Sum('acquired_value'))
 
 
    return render(request, 'portfolio/portfolio.html', {'customers': customers, 'investments': investments,
                                                       'stocks': stocks,
+                                                       'sum_recent_value' : sum_recent_value,
                                                       'sum_acquired_value': sum_acquired_value,})
+
+
+class CustomerList(APIView):
+
+    def get(self,request):
+        customers_json = Customer.objects.all()
+        serializer = CustomerSerializer(customers_json, many=True)
+        return Response(serializer.data)
+
+
